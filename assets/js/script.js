@@ -103,7 +103,8 @@ $(".answer__input").on("change", function (e) {
   }
   $(this).next().append(tick);
 });
-
+let counter = 0
+let answers_correct = ['No','No','Yes','Yes','Pink','Swim','Yes','Yes']
 $(".navigation__btn--right").click(function (e) {
   let currentIndex = Number($(".quiz__step--current").attr("data-question"));
   if ($(".quiz__step--current input:checked").length == 0) {
@@ -128,8 +129,9 @@ $(".navigation__btn--right").click(function (e) {
         '<div class="summary__item"><div class="question__emoji">' +
         icon +
         "</div>" +
-        answer +
+        answer + " -> " +answers_correct[counter] +
         "</div>";
+      counter++;
       $("#summary").append(node);
     });
   }
