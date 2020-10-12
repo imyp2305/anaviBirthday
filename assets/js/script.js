@@ -194,40 +194,31 @@ $(".submit").click(function (e) {
 
 
 
-jQuery(document).ready(function ($) {
-  //create the slider
-  $(".cd-testimonials-wrapper").flexslider({
-    selector: ".cd-testimonials > li",
-    animation: "slide",
-    controlNav: false,
-    slideshow: false,
-    smoothHeight: true,
-    start: function () {
-      $(".cd-testimonials").children("li").css({
-        opacity: 1,
-        position: "relative"
-      });
-    }
-  });
 
-  //open the testimonials modal page
-  $(".cd-see-all").on("click", function () {
-    $(".cd-testimonials-all").addClass("is-visible");
-  });
 
-  //close the testimonials modal page
-  $(".cd-testimonials-all .close-btn").on("click", function () {
-    $(".cd-testimonials-all").removeClass("is-visible");
-  });
-  $(document).keyup(function (event) {
-    //check if user has pressed 'Esc'
-    if (event.which == "27") {
-      $(".cd-testimonials-all").removeClass("is-visible");
-    }
-  });
+var slideIndex = 1;
+showSlides(slideIndex);
 
-  //build the grid for the testimonials modal page
-  $(".cd-testimonials-all-wrapper").children("ul").masonry({
-    itemSelector: ".cd-testimonials-item"
-  });
-});
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
