@@ -104,7 +104,7 @@ $(".answer__input").on("change", function (e) {
   $(this).next().append(tick);
 });
 let counter = 0
-let answers_correct = ['No','No','Yes','Yes','No','Swimming','Yes','Yes']
+let answers_correct = ['No','No','Yes','No','Yes','No','Yes','Yes']
 $(".navigation__btn--right").click(function (e) {
   let currentIndex = Number($(".quiz__step--current").attr("data-question"));
   if ($(".quiz__step--current input:checked").length == 0) {
